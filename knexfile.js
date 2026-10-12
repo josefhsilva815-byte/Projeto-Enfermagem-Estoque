@@ -14,7 +14,7 @@ export default {
       filename: './src/database/estoque.db'
     },
     migrations: {
-      directory: path.join("../src/database/migrations")
+      directory: path.join("./src/database/migrations")
     },
     useNullAsDefault: true
   },
