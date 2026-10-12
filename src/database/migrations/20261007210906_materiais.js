@@ -9,10 +9,10 @@ export function up(knex) {
     table.string('nome').notNullable();
     table.integer('quantidade').notNullable();
     table.text('decricao').notNullable().defaultTo('vazio');
-    table.enu('categoria', ['material', 'equipamento', 'outros']).defaultTo('outros');
+    table.enu('categoria', ['material', 'equipamento', 'outros']).notNullable().defaultTo('outros');
     table.date('data_fabricacao').notNullable();
-    table.date('data_validade').defaultTo('indefinido');
-    table.timestamps('data_criacao').defaultTo(knex.fn.now());
+    table.date('data_validade').notNullable();
+    table.timestamps(true, true);
 
     table.foreign('instrutor_id').references('id').inTable('instrutores');
   })
