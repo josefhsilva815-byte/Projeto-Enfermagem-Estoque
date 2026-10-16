@@ -26,7 +26,7 @@ async function instrutoresRoutes(fastify, options) {
     fastify.get('/instructors/order/asc', (req, reply) => getAllInstructorsOrderAsc(req, reply));
     fastify.get('/instructors/order/desc', (req, reply) => getAllInstructorsOrderDesc(req, reply));
     fastify.get('/instructors/id/:id', (req, reply) => getInstructorById(req, reply));
-    fastify.get('/instructors/name/:name', (req, reply) => getInstructorByName(req, reply));
+    fastify.get('/instructors/name/:nome', (req, reply) => getInstructorByName(req, reply));
     fastify.get('/instructors/email/:email', (req, reply) => getInstructorByEmail(req, reply));
 
     // UPDATE (U)

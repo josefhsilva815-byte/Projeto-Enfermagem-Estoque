@@ -39,5 +39,5 @@ fastify.listen({ port: 3000 }, (err, address) => {
         fastify.log.error(err)
         process.exit(1)
     }
-    fastify.log.info(`Servidor operando no endereço ${address}`);
+    console.log(`Servidor operando no endereço ${address}`);
 });

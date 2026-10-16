@@ -57,7 +57,7 @@ class InstructorsRepository {
     // UPDATE
     async updateInstructor(id, data) {
         try {
-            const [instrutor] = DB('instrutores').where({ id });
+            const instrutor = await DB('instrutores').where({ id }).first();
             if (!instrutor) throw new Error('Instrutor não encontrado!');
             const updateInstrutor = {
                 nome: data.nome ?? instrutor.nome,
@@ -73,7 +73,7 @@ class InstructorsRepository {
     // DELETE
     async deleteInstructor(id) {
         try {
-            const instrutor = DB('instrutores').where({ id }).first();
+            const instrutor = await DB('instrutores').where({ id }).first();
             if (!instrutor) throw new Error('Instrutor não encontrado!');
             return await DB('instrutores').where({ id }).delete();
         } catch (error) {
