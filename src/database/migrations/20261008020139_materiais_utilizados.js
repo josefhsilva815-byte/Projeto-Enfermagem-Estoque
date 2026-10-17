@@ -9,7 +9,7 @@ export function up(knex) {
         table.integer('item_id').notNullable();
         table.integer('quantidade').notNullable();
         table.string('disciplina').notNullable();
-        table.text('observacao').notNullable().defaultTo('vazio');
+        table.text('observacao').defaultTo('vazio');
         table.string('turma').notNullable();
         table.enu('turno', ['manha', 'tarde', 'noite']).notNullable();
         table.timestamp('data_criacao').defaultTo(knex.fn.now());
