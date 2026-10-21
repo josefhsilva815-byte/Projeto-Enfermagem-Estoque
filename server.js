@@ -1,7 +1,8 @@
 import Fastify from "fastify";
 import DB from "./src/database/configDB.js";
 import instrutoresRoutes from "./src/routes/instrutoresRoutes.js";
-import materiaisRoutes from "./src/routes/materiaisRoutes.js"
+import cupboardOneRoutes from "./src/routes/cupboardOneRoutes.js";
+import cupboardTwoRoutes from "./src/routes/cupboardTwoRoutes.js";
 import materiaisUtilizadosRoutes from "./src/routes/materiaisUtilizadosRoutes.js";
 
 /**
@@ -13,14 +14,11 @@ const fastify = Fastify({
     logger: true
 });
 
-fastify.register(instrutoresRoutes)
-fastify.register(materiaisRoutes)
-fastify.register(materiaisUtilizadosRoutes)
+fastify.register(instrutoresRoutes);
+fastify.register(cupboardOneRoutes);
+fastify.register(cupboardTwoRoutes);
+fastify.register(materiaisUtilizadosRoutes);
 
-
-fastify.get("/", (request, reply) => {
-    reply.send({ hello: 'word' });
-})
 
 
 fastify.get("/test/:table", async (req, reply) => {

@@ -8,7 +8,7 @@ export function up(knex) {
         table.integer('instrutor_id').notNullable();
         table.string('nome').notNullable();
         table.integer('quantidade').notNullable();
-        table.text('decricao').defaultTo('vazio');
+        table.text('descricao').defaultTo('vazio');
         table.enu('categoria', ['material', 'equipamento', 'outros']).defaultTo('outros');
         table.date('data_fabricacao').notNullable();
         table.date('data_validade').defaultTo('indeterminado');
