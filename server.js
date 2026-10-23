@@ -1,9 +1,9 @@
 import Fastify from "fastify";
 import DB from "./src/database/configDB.js";
-import instrutoresRoutes from "./src/routes/instrutoresRoutes.js";
 import cupboardOneRoutes from "./src/routes/cupboardOneRoutes.js";
 import cupboardTwoRoutes from "./src/routes/cupboardTwoRoutes.js";
-import materiaisUtilizadosRoutes from "./src/routes/materiaisUtilizadosRoutes.js";
+import instrutoresRoutes from "./src/routes/instrutoresRoutes.js";
+import materialsUsedRoutes from "./src/routes/materialsUsedRoutes.js";
 
 /**
  * @type {import('fastify').FastifyInstance} Instância do Fastify
@@ -14,10 +14,10 @@ const fastify = Fastify({
     logger: true
 });
 
-fastify.register(instrutoresRoutes);
 fastify.register(cupboardOneRoutes);
 fastify.register(cupboardTwoRoutes);
-fastify.register(materiaisUtilizadosRoutes);
+fastify.register(instrutoresRoutes);
+fastify.register(materialsUsedRoutes);
 
 
 
@@ -25,9 +25,9 @@ fastify.get("/test/:table", async (req, reply) => {
     const { table } = req.params;
     try {
         const data = await DB(`${table}`);
-        reply.send(JSON.stringify(data))
+        reply.code(200).send(data)
     } catch (error) {
-        reply.send({ "Erro": error.message })
+        reply.code(400).send({ messsage: "TEST DATABASE", error: error.message })
     }
 })
 
