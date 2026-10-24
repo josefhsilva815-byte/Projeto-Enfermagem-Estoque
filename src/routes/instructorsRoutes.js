@@ -17,7 +17,7 @@ import {
  */
 
 
-async function instrutoresRoutes(fastify, options) {
+async function instructorsRoutes(fastify, options) {
     // POST   (C)
     fastify.post('/instructors', (req, reply) => newInstructor(req, reply));
 
@@ -36,4 +36,4 @@ async function instrutoresRoutes(fastify, options) {
     fastify.delete('/instructors/delete/:id', (req, reply) => delInstructor(req, reply));
 }
 
-export default instrutoresRoutes;
+export default instructorsRoutes;

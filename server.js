@@ -2,7 +2,7 @@ import Fastify from "fastify";
 import DB from "./src/database/configDB.js";
 import cupboardOneRoutes from "./src/routes/cupboardOneRoutes.js";
 import cupboardTwoRoutes from "./src/routes/cupboardTwoRoutes.js";
-import instrutoresRoutes from "./src/routes/instrutoresRoutes.js";
+import instructorsRoutes from "./src/routes/instructorsRoutes.js";
 import materialsUsedRoutes from "./src/routes/materialsUsedRoutes.js";
 
 /**
@@ -16,7 +16,7 @@ const fastify = Fastify({
 
 fastify.register(cupboardOneRoutes);
 fastify.register(cupboardTwoRoutes);
-fastify.register(instrutoresRoutes);
+fastify.register(instructorsRoutes);
 fastify.register(materialsUsedRoutes);
 
 
