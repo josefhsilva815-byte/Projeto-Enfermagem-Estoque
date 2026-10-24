@@ -1,0 +1,907 @@
+type: collection.insomnia.rest/5.0
+schema_version: "5.1"
+name: Scratch Pad
+meta:
+  id: wrk_scratchpad
+  created: 1791415238098
+  modified: 1791415238098
+  description: ""
+collection:
+  - name: Projeto Enfermagem Estoque
+    meta:
+      id: fld_0efe791a13f54db7a2dae165db5f1270
+      created: 1792150781276
+      modified: 1792150781276
+      sortKey: -1792150781276
+      description: ""
+    children:
+      - name: Instrutores
+        meta:
+          id: fld_f85699f7bb714f57b23e9d14aaa608ad
+          created: 1792150815266
+          modified: 1792150815266
+          sortKey: -1792150815266
+          description: ""
+        children:
+          - url: http://localhost:3000/instructors
+            name: GET ALL INSTRUCTORS
+            meta:
+              id: req_43f84be99fbe49b3935bdf21114b7913
+              created: 1792151027504
+              modified: 1792861774506
+              isPrivate: false
+              description: ""
+              sortKey: -1792151486507.5
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/order/asc
+            name: GET ALL INSTRUCTORS ORDER ASC
+            meta:
+              id: req_ece7b7a693d6455c8faf447955e2b726
+              created: 1792151186339
+              modified: 1792861781820
+              isPrivate: false
+              description: ""
+              sortKey: -1792151340700
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/order/desc
+            name: GET ALL INSTRUCTORS ORDER DESC
+            meta:
+              id: req_3b4129fed08545a9bd91fd1140981049
+              created: 1792151231805
+              modified: 1792152538463
+              isPrivate: false
+              description: ""
+              sortKey: -1792151231805
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/id/1
+            name: GET INSTRUCTOR BY ID
+            meta:
+              id: req_760fc4b79c464a4d8ae0ffdc70270545
+              created: 1792151288926
+              modified: 1792861777553
+              isPrivate: false
+              description: ""
+              sortKey: -1792151468051.25
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/name/jos
+            name: GET INSTRUCTOR BY NAME
+            meta:
+              id: req_9ac11e7fdf3c40efb9efd508fbd20e93
+              created: 1792151341017
+              modified: 1792861779276
+              isPrivate: false
+              description: ""
+              sortKey: -1792151458823.125
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/email/josefhsilva815@gmail.com
+            name: GET INSTRUCTOR BY EMAIL
+            meta:
+              id: req_fae815eb791a451aa4a5cf5cabd999ea
+              created: 1792151449595
+              modified: 1792152346319
+              isPrivate: false
+              description: ""
+              sortKey: -1792151449595
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors
+            name: CREATE INSTRUCTOR
+            meta:
+              id: req_80dcf12696834dee98cf65ab2227cac5
+              created: 1792151523420
+              modified: 1792863667559
+              isPrivate: false
+              description: ""
+              sortKey: -1792151129604.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"nome":"josé",
+                	"email":"josefhsilva815@gmail.com",
+                	"senha":"kajsidfnasoao93837491"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/update/1
+            name: UPDATE INSTRUCTOR
+            meta:
+              id: req_4ef8f07e606e4b9c85007a30bfccaea3
+              created: 1792151667621
+              modified: 1792861768312
+              isPrivate: false
+              description: ""
+              sortKey: -1792151027404
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"nome":"jairo",
+                	"email":"josefhsilva815@gmail.com",
+                	"senha":"kajsidfnasoao93837491"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/instructors/delete/1
+            name: DELETE INSTRUCTOR
+            meta:
+              id: req_fe8432047c174f1c893cc3b46d21c96c
+              created: 1792151722604
+              modified: 1792861771971
+              isPrivate: false
+              description: ""
+              sortKey: -1792151027304
+            method: DELETE
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Armario 1
+        meta:
+          id: fld_b91a4e977ac7447ba1a2b1669d8a05ef
+          created: 1792150834357
+          modified: 1792498577614
+          sortKey: -1792150902326.5
+          description: ""
+        children:
+          - url: http://localhost:3000/cupboardOne
+            name: CREATE ITEM
+            meta:
+              id: req_6e2a6506647f4b41be74baaa6210341b
+              created: 1792498583874
+              modified: 1792864040879
+              isPrivate: false
+              description: ""
+              sortKey: -1792499116703.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"instrutor_id":1,
+                	"nome":"nitrona",
+                	"quantidade":40,
+                	"descricao":"Uso oral e adulto",
+                	"categoria":"material",
+                	"data_fabricacao":"06/2024",
+                	"data_validade":"11/2026"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/delete/1
+            name: DELETE ITEM
+            meta:
+              id: req_86137f6e7ac447dfa09f2c7c7bc893bb
+              created: 1792499049183
+              modified: 1792499141823
+              isPrivate: false
+              description: ""
+              sortKey: -1792499049183
+            method: DELETE
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/update/1
+            name: UPDATE ITEM
+            meta:
+              id: req_354cde68ea2f40168f0245654ee828c7
+              created: 1792499079631
+              modified: 1792551869676
+              isPrivate: false
+              description: ""
+              sortKey: -1792499079631
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"quantidade":400,
+                	"descricao":"Uso oral e adulto",
+                	"data_validade":"11/2026"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/instructor/id/3
+            name: GET ITEM BY INSTRUCTOR ID
+            meta:
+              id: req_f92bf7ac21f7468193c90b84786d1ac4
+              created: 1792499153776
+              modified: 1792551972089
+              isPrivate: false
+              description: ""
+              sortKey: -1792499153776
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/expired
+            name: GET ITEMS EXPIRED
+            meta:
+              id: req_2acb925a85fc421b96d6ba06ff8d8545
+              created: 1792499211310
+              modified: 1792499617610
+              isPrivate: false
+              description: ""
+              sortKey: -1792499211310
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/category/material
+            name: GET ITEMS BY CATEGORY
+            meta:
+              id: req_2a63bd02020046eb877e8d10c85c2ea8
+              created: 1792499214604
+              modified: 1792499539853
+              isPrivate: false
+              description: ""
+              sortKey: -1792499214604
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/name/nitrofuna
+            name: GET ITEMS BY NAME
+            meta:
+              id: req_2866c866c92f43fdad198fa9cdf0e2c5
+              created: 1792499256530
+              modified: 1792551456474
+              isPrivate: false
+              description: ""
+              sortKey: -1792499256530
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/id/4
+            name: GET ITEM BY ID
+            meta:
+              id: req_2d20f13640654359b89c50b63d083429
+              created: 1792499258916
+              modified: 1792551424430
+              isPrivate: false
+              description: ""
+              sortKey: -1792499258916
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/amount/asc
+            name: GET ITEMS BY AMOUNT ASC
+            meta:
+              id: req_7a72d1c3aa5f4416b40d87e001a70622
+              created: 1792499274678
+              modified: 1792499410383
+              isPrivate: false
+              description: ""
+              sortKey: -1792499274678
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne/amount/desc
+            name: GET ITEMS BY AMOUNT DESC
+            meta:
+              id: req_9479cee6c018411ead6c813dd5cc5840
+              created: 1792499275188
+              modified: 1792499368101
+              isPrivate: false
+              description: ""
+              sortKey: -1792499275188
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardOne
+            name: GET ALL ITEMS
+            meta:
+              id: req_0ca4ee1607744d8792958fe9d668a0c1
+              created: 1792499275593
+              modified: 1792551320357
+              isPrivate: false
+              description: ""
+              sortKey: -1792499275593
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Materiais Utilizados
+        meta:
+          id: fld_ca09255f25ea4a56b455b12782e8fe14
+          created: 1792150924983
+          modified: 1792860610774
+          sortKey: -1792150924983
+          description: ""
+        children:
+          - url: http://localhost:3000/materials_used
+            name: CREATE MATERIAL USED
+            meta:
+              id: req_9c1bbe8649174162be942e64a39e74f1
+              created: 1792859876852
+              modified: 1792863730587
+              isPrivate: false
+              description: ""
+              sortKey: -1792860246115
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"instrutor_id": 1,
+                	"nome":"ibuprofeno",
+                	"quantidade":10,
+                  "disciplina": "Enfermagem",
+                  "observacao": "nada",
+                  "turma":"00012026",
+                  "turno":"noite"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/delete/1
+            name: DELETE MATERIAL
+            meta:
+              id: req_cb77839492094112ba952b4d6789f8cf
+              created: 1792859877456
+              modified: 1792860431513
+              isPrivate: false
+              description: ""
+              sortKey: -1792859877456
+            method: DELETE
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/update/1
+            name: UPDATE MATERIAL
+            meta:
+              id: req_fbe6e14d0560487497867a389e369620
+              created: 1792859877963
+              modified: 1792860721492
+              isPrivate: false
+              description: ""
+              sortKey: -1792859877963
+            method: PUT
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/between
+            name: GET ITEM USED BETWEEN DATE
+            meta:
+              id: req_818dd34e66ee4c6492a8ac30072a592f
+              created: 1792860614267
+              modified: 1792861136179
+              isPrivate: false
+              description: ""
+              sortKey: -1792860614267
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/class/000012026
+            name: GET ITEM USED BY CLASS
+            meta:
+              id: req_7e5f79f86e5943988da6dc6ca42d09a4
+              created: 1792860614599
+              modified: 1792861034700
+              isPrivate: false
+              description: ""
+              sortKey: -1792860614599
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/discipline/enfermagem
+            name: GET ITEM USED BY DISCIPLINE
+            meta:
+              id: req_38534ebda221465e93fe0083868373d1
+              created: 1792860614941
+              modified: 1792861006169
+              isPrivate: false
+              description: ""
+              sortKey: -1792860614941
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/shift/manha
+            name: GET ITEM USED BY SHIFT
+            meta:
+              id: req_12e63c3cf6b74c56a49c9891f67e72d8
+              created: 1792860615233
+              modified: 1792860974247
+              isPrivate: false
+              description: ""
+              sortKey: -1792860615233
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/instructor_id/1
+            name: GET ITEM USED BY INSTRUCTOR ID
+            meta:
+              id: req_9994e5eb3df2431b8ecf1c841c5a8078
+              created: 1792860615603
+              modified: 1792860881641
+              isPrivate: false
+              description: ""
+              sortKey: -1792860615603
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/item_id/1
+            name: GET ITEM USED BY ITEM ID
+            meta:
+              id: req_dd752adcd71b4574af766729c8b7ec3e
+              created: 1792860616003
+              modified: 1792860845582
+              isPrivate: false
+              description: ""
+              sortKey: -1792860616003
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used/id/1
+            name: GET ITEM USED BY ID
+            meta:
+              id: req_999d2fdaf0984b35a6b04c10ed1e4c95
+              created: 1792860617629
+              modified: 1792860815405
+              isPrivate: false
+              description: ""
+              sortKey: -1792860617629
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/materials_used
+            name: GET ALL ITEMS USED
+            meta:
+              id: req_88e510bf36784c5c948dd77b5e8e23f0
+              created: 1792860617940
+              modified: 1792860795413
+              isPrivate: false
+              description: ""
+              sortKey: -1792860617940
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+      - name: Armario 2
+        meta:
+          id: fld_3974f258544f47c1a693d9aad9117856
+          created: 1792578222636
+          modified: 1792578241876
+          sortKey: -1792150890998.25
+          description: ""
+        children:
+          - url: http://localhost:3000/cupboardTwo
+            name: CREATE ITEM
+            meta:
+              id: req_137c2b3060da489d9a3f0d436f1d1299
+              created: 1792578222636
+              modified: 1792863674122
+              isPrivate: false
+              description: ""
+              sortKey: -1792499116703.5
+            method: POST
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"instrutor_id":1,
+                	"nome":"ibuprofeno",
+                	"quantidade":50,
+                	"descricao":"Uso adulto",
+                	"categoria":"material",
+                	"data_fabricacao":"08/2024",
+                	"data_validade":"10/2026"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/amount/asc
+            name: GET ITEMS BY AMOUNT ASC
+            meta:
+              id: req_4532bf0d7a23499b9bd9b3d9f1d2d013
+              created: 1792578222636
+              modified: 1792578270011
+              isPrivate: false
+              description: ""
+              sortKey: -1792499274678
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/id/4
+            name: GET ITEM BY ID
+            meta:
+              id: req_4cb83bc30375481386a2ad9537611e11
+              created: 1792578222636
+              modified: 1792578275625
+              isPrivate: false
+              description: ""
+              sortKey: -1792499258916
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/delete/1
+            name: DELETE ITEM
+            meta:
+              id: req_76fcac0a179d4cd5a83470c6aab50f30
+              created: 1792578222636
+              modified: 1792578305493
+              isPrivate: false
+              description: ""
+              sortKey: -1792499049183
+            method: DELETE
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/instructor/id/1
+            name: GET ITEM BY INSTRUCTOR ID
+            meta:
+              id: req_8041eb82cd264cf3911ce2c5775fb370
+              created: 1792578222636
+              modified: 1792579016679
+              isPrivate: false
+              description: ""
+              sortKey: -1792499153776
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/category/material
+            name: GET ITEMS BY CATEGORY
+            meta:
+              id: req_827145d7aa5047aeb701ad073ecc0169
+              created: 1792578222636
+              modified: 1792578283322
+              isPrivate: false
+              description: ""
+              sortKey: -1792499214604
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/expired
+            name: GET ITEMS EXPIRED
+            meta:
+              id: req_893f5378085546b0b619d34ac0af2c2a
+              created: 1792578222636
+              modified: 1792578288186
+              isPrivate: false
+              description: ""
+              sortKey: -1792499211310
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/amount/desc
+            name: GET ITEMS BY AMOUNT DESC
+            meta:
+              id: req_8ae1fc7d93d147a988fbd6f2dec3b547
+              created: 1792578222636
+              modified: 1792578265841
+              isPrivate: false
+              description: ""
+              sortKey: -1792499275188
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo
+            name: GET ALL ITEMS
+            meta:
+              id: req_ceea5f97a6f64d59a18bc13c8fc07e7f
+              created: 1792578222636
+              modified: 1792578256674
+              isPrivate: false
+              description: ""
+              sortKey: -1792499275593
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/name/dipirona
+            name: GET ITEMS BY NAME
+            meta:
+              id: req_e3b8270e097f4a19b2e76a75a511c671
+              created: 1792578222636
+              modified: 1792578995959
+              isPrivate: false
+              description: ""
+              sortKey: -1792499256530
+            method: GET
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+          - url: http://localhost:3000/cupboardTwo/update/3
+            name: UPDATE ITEM
+            meta:
+              id: req_e604ef1ef2664eaf9d0cee2cd3cc6b4d
+              created: 1792578222636
+              modified: 1792579085097
+              isPrivate: false
+              description: ""
+              sortKey: -1792499079631
+            method: PUT
+            body:
+              mimeType: application/json
+              text: |-
+                {
+                	"quantidade":300,
+                	"descricao":"Uso oral e adulto",
+                	"data_validade":"12/2026"
+                }
+            headers:
+              - name: Content-Type
+                value: application/json
+            settings:
+              renderRequestBody: true
+              encodeUrl: true
+              followRedirects: global
+              cookies:
+                send: true
+                store: true
+              rebuildPath: true
+cookieJar:
+  name: Default Jar
+  meta:
+    id: jar_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1791416598371
+    modified: 1791416598371
+environments:
+  name: Base Environment
+  meta:
+    id: env_99d30891da4bdcebc63947a8fc17f076de878684
+    created: 1791416598349
+    modified: 1791416598349
+    isPrivate: false
