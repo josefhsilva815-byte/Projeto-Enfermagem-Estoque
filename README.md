@@ -107,7 +107,7 @@ Os métodos REST mais comuns são:
 
 - `GET` — consultar ou listar registros.
 - `POST` — criar registros.
-- `PUT` ou `PATCH` — atualizar registros.
+- `PUT` — atualizar registros.
 - `DELETE` — excluir registros.
 
 Os caminhos específicos dependem das rotas implementadas no projeto.
