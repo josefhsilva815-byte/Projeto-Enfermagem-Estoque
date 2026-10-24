@@ -20,6 +20,8 @@ class CupboardRepository {
         data_validade
     }) {
         try {
+            const instrutor = await DB('instrutores').where('id', '=', instrutor_id).first();
+            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
             if (!(instrutor_id && nome && quantidade && descricao && categoria && data_fabricacao && data_validade)) {
                 throw new Error('Algum valor está vazio!');
             };
@@ -44,7 +46,18 @@ class CupboardRepository {
     // GET
     async listAll() {
         try {
-            return await DB(this.table);
+            return await DB(this.table)
+                .join('instrutores', `${this.table}.instrutor_id`, '=', 'instrutores.id')
+                .select(
+                    { id: `${this.table}.id` },
+                    { instrutor: 'instrutores.nome' },
+                    { nome: `${this.table}.nome` },
+                    { quantidade: `${this.table}.quantidade` },
+                    { descricao: `${this.table}.descricao` },
+                    { categoria: `${this.table}.categoria` },
+                    { data_fabricacao: `${this.table}.data_fabricacao` },
+                    { data_validade: `${this.table}.data_validade` }
+                );
         } catch (error) {
             throw new Error(error);
         }

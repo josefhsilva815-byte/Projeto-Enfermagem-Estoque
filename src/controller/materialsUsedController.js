@@ -7,7 +7,7 @@ export async function newItemUsed(req, reply) {
     try {
         const {
             instrutor_id,
-            item_id,
+            nome,
             quantidade,
             disciplina,
             observacao,
@@ -16,7 +16,7 @@ export async function newItemUsed(req, reply) {
         } = req.body;
         await materialsUsedRepository.createItem({
             instrutor_id,
-            item_id,
+            nome,
             quantidade,
             disciplina,
             observacao,

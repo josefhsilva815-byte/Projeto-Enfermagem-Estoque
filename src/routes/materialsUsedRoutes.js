@@ -34,10 +34,10 @@ async function materialsUsedRoutes(fastify, options) {
 
     // UPDATE
 
-    fastify.put('material_used/update/:id', (req, reply) => updItemUsed(req, reply))
+    fastify.put('/materials_used/update/:id', (req, reply) => updItemUsed(req, reply))
 
     // DELETE
-    fastify.delete('materials_used/delete/:id', (req, reply) => delItemUsed(req, reply))
+    fastify.delete('/materials_used/delete/:id', (req, reply) => delItemUsed(req, reply))
 }
 
 export default materialsUsedRoutes;

@@ -4,7 +4,7 @@ class MaterialsUsedRepository {
     // POST
     async createItem({
         instrutor_id,
-        item_id,
+        nome,
         quantidade,
         disciplina,
         observacao,
@@ -12,18 +12,25 @@ class MaterialsUsedRepository {
         turno
     }) { // Inserir item na tabela
         try {
-            if (!(instrutor_id && item_id && quantidade && disciplina && observacao && turma && turno)) {
+            const itemArm1 = await DB('armario_1').where('nome', '=', nome).first();
+            const itemArm2 = await DB('armario_2').where('nome', '=', nome).first();
+            const instrutor = await DB('instrutores').where('id', '=', instrutor_id).first();
+
+            if (!(instrutor_id && nome && quantidade && disciplina && observacao && turma && turno)) {
                 throw new Error('Algum valor está vazio!');
-            }
+            };
+            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
+            if (!(itemArm1 || itemArm2)) throw new Error('Item não cadastrado no sitema!');
             if (Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+
             const newItemUsed = await DB('materiais_utilizados').insert({
                 instrutor_id,
-                item_id,
+                nome,
                 quantidade,
                 disciplina,
                 observacao,
                 turma,
-                turno,
+                turno
             });
             return newItemUsed
         } catch (error) {
@@ -35,12 +42,10 @@ class MaterialsUsedRepository {
     async listAll() {
         return await DB({ items_used: 'materiais_utilizados' })
             .join('instrutores', 'items_used.instrutor_id', 'instrutores.id')
-            .leftJoin('armario_1', 'items_used.item_id', 'armario_1.id')
-            .leftJoin('armario_2', 'items_used.item_id', 'armario_2.id')
             .select(
                 { id: 'items_used.id' },
-                { instrutor: 'instrutores.id' },
-                { nome: DB.raw("COALESCE(armario_1.nome, armario_2.nome)") },
+                { instrutor: 'instrutores.nome' },
+                { nome: 'items_used.nome' },
                 { quantidade: 'items_used.quantidade' },
                 { disciplina: 'items_used.disciplina' },
                 { observacao: 'items_used.observacao' },
@@ -58,9 +63,9 @@ class MaterialsUsedRepository {
             throw new Error(error);
         }
     }
-    async listByItemId(id) {
+    async listByName(nome) {
         try {
-            return await DB('materiais_utilizados').where('item_id', '=', id);
+            return await DB('materiais_utilizados').whereLike('nome', `${nome}%`);
         } catch (error) {
             throw new Error(error);
         }
