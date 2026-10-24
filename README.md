@@ -99,6 +99,10 @@ Por padrão, a API estará disponível em `http://localhost:3000`, desde que ess
 
 Utilize o **Insomnia** para enviar requisições HTTP às rotas da API.
 
+O projeto também inclui um arquivo de exportação com requisições HTTP de teste, que pode ser importado diretamente no Insomnia. Assim, outros desenvolvedores podem reproduzir os testes com mais facilidade, sem precisar configurar cada requisição manualmente.
+
+Para utilizá-lo, abra o Insomnia, escolha a opção de importar e selecione o arquivo `testsInsomnia.yaml` disponibilizado no projeto.
+
 Os métodos REST mais comuns são:
 
 - `GET` — consultar ou listar registros.
