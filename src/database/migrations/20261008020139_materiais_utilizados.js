@@ -13,7 +13,7 @@ export function up(knex) {
     return knex.schema.createTable('materiais_utilizados', (table) => {
         table.increments('id').unsigned().primary();
         table.integer('instrutor_id').notNullable();
-        table.string('nome').notNullable();
+        table.integer('item_id').notNullable();
         table.integer('quantidade').notNullable();
         table.string('disciplina').notNullable();
         table.text('observacao').defaultTo('vazio');
@@ -22,8 +22,8 @@ export function up(knex) {
         table.timestamp('criado_em').defaultTo(today());
 
         table.foreign('instrutor_id').references('id').inTable('instrutores');
-        table.foreign('nome').references('nome').inTable('armario_1');
-        table.foreign('nome').references('nome').inTable('armario_2');
+        table.foreign('item_id').references('id').inTable('armario_1');
+        table.foreign('item_id').references('id').inTable('armario_2');
     })
 };
 

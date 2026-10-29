@@ -4,7 +4,7 @@
  */
 export function up(knex) {
     return knex.schema.createTable('armario_1', (table) => {
-        table.increments('id').unsigned().primary();
+        table.string('id').primary();
         table.integer('instrutor_id').notNullable();
         table.string('nome').notNullable();
         table.integer('quantidade').notNullable();
