@@ -1,4 +1,5 @@
 import DB from "../database/configDB.js";
+import searchItemInAllTables from "../services/searchItemInAllTables.js";
 
 function formatDate(date = '') {
     const [ano, mes, dia] = date.split(/[-/]/).toReversed();
@@ -27,33 +28,10 @@ class CupboardRepository {
             };
             if (Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
-            /*> Versão 1
             const randomID = async () => {
-                try {
-                    const tabelas = await DB('sqlite_master')
-                        .whereLike('name', 'armario%')
-                        .select('name');
-
-                    const id = crypto.randomUUID();
-                    tabelas.forEach(async table => {
-                        const item = await DB(table.name).where({ id }).first();
-                        if (item) return await randomID();
-                    });
-                    return id;
-                } catch (error) {
-                    throw new Error(error);
-                }
-
-            }<*/
-
-            const randomID = async () => {
-                const num = this.table.split('_')[1] === '1' ? '2' : '1';
-                let id = '';
-                let item = '';
-                do {
-                    id = crypto.randomUUID();
-                    item = await DB(`armario_${num}`).where({ id }).first();
-                } while (item);
+                let id = crypto.randomUUID();
+                const { item } = await searchItemInAllTables(id);
+                if (item) randomID();
                 return id
             }
 

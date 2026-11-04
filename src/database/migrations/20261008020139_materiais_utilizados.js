@@ -13,7 +13,7 @@ export function up(knex) {
     return knex.schema.createTable('materiais_utilizados', (table) => {
         table.increments('id').unsigned().primary();
         table.integer('instrutor_id').notNullable();
-        table.integer('item_id').notNullable();
+        table.string('item_id').notNullable();
         table.integer('quantidade').notNullable();
         table.string('disciplina').notNullable();
         table.text('observacao').defaultTo('vazio');

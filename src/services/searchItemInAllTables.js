@@ -1,13 +1,13 @@
 import DB from "../database/configDB.js";
 /**
  * Buscar item em todas as tabelas
- * @param id Recebe um UUID
+ * @param id Recebe um UUID - xxxx-xxxx-xxxx-xxxx-xxxx
  * @returns Object { table, item }
  * - table: Tabela onde o item foi encontrado
  * - item: Item encontrado
  */
 
-async function searchItemInAllTables(id = "xxxx-xxxx-xxxx-xxxx-xxxx") {
+async function searchItemInAllTables(id = "") {
     try {
         const cupboardTables = await DB('sqlite_master') // Busca todas as tabela
             .whereLike('name', 'armario%') // Seleciona só as que tem armario no nome
