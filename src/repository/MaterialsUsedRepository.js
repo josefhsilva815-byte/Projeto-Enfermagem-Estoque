@@ -1,4 +1,7 @@
 import DB from "../database/configDB.js";
+import recordUsage from "../services/recordUsage.js";
+import searchItemInAllTables from "../services/searchItemInAllTables.js";
+import InstructorsRepository from "./InstructorsRepository.js";
 
 class MaterialsUsedRepository {
     // POST
@@ -12,16 +15,17 @@ class MaterialsUsedRepository {
         turno
     }) { // Inserir item na tabela
         try {
-            const itemArm1 = await DB('armario_1').where('id', '=', item_id).first();
-            const itemArm2 = await DB('armario_2').where('id', '=', item_id).first();
-            const instrutor = await DB('instrutores').where('id', '=', instrutor_id).first();
+            const itemArm = await searchItemInAllTables(item_id);
+            const instrutor = await new InstructorsRepository().searchById(instrutor_id);
 
             if (!(instrutor_id && item_id && quantidade && disciplina && observacao && turma && turno)) {
                 throw new Error('Algum valor está vazio!');
             };
             if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
-            if (!(itemArm1 || itemArm2)) throw new Error('Item não cadastrado no sitema!');
-            if (Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+            if (!itemArm) throw new Error('Item não cadastrado no sitema!');
+            if (Number.isInteger(quantidade) && Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+
+            await recordUsage(item_id, quantidade);
 
             const newItemUsed = await DB('materiais_utilizados').insert({
                 instrutor_id,
@@ -100,8 +104,9 @@ class MaterialsUsedRepository {
             throw new Error(error);
         }
     }
-    async listBetween(de, ate) {
+    async listBetween(de, ate = new Date().toISOString().split("T")[0]) {
         try {
+            if (!de) throw new Error("Data de início vazia!");
             return DB('materiais_utilizados').whereBetween('criado_em', [de, ate]);
         } catch (error) {
             throw new Error(error)

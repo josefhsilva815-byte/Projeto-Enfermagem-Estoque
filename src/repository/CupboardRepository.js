@@ -129,8 +129,9 @@ class CupboardRepository {
         try {
             const item = await DB(this.table).where({ id }).first();
             if (!item) throw new Error('Item não encontrado!');
-            if (Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+            if (Number.isInteger(data.quantidade) && Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
+            
             const newItem = {
                 instrutor_id: item.instrutor_id,
                 nome: item.nome,
