@@ -20,7 +20,7 @@ async function searchItemInAllTables(id = "") {
         const itemsLocalized = await Promise.all(tablePromises); // Espera todas as buscas serem finalizadas e retorna o resultado de cada uma 
         const objItems = { ...itemsLocalized }; // Transforma o array em um objeto { index: campo };
 
-        return Object.keys(objItems) // Cria um array com as propriedades do objeto "objItems";
+        const result = Object.keys(objItems) // Cria um array com as propriedades do objeto "objItems";
             .map(item => {
                 return { // Retorna um objeto com a Tabela e o Item encontrados
                     table: cupboardTables[item],
@@ -28,6 +28,8 @@ async function searchItemInAllTables(id = "") {
                 }
             })
             .filter(({ item }) => item)[0]; // Filtra somente os elementos que tiverem algum valor em "item" e retorna o primeiro elemento
+
+        return result || { table: undefined, item: undefined };
     } catch (error) {
         throw new Error({ message: "SEARCH ITEM IN ALL TABLES", error })
     }
