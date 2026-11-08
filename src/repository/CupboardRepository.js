@@ -1,10 +1,6 @@
 import DB from "../database/configDB.js";
+import { formatDate, today } from "../services/configTime.js";
 import searchItemInAllTables from "../services/searchItemInAllTables.js";
-
-function formatDate(date = '') {
-    const [ano, mes, dia] = date.split(/[-/]/).toReversed();
-    return `${ano}-${mes}-${dia ? dia : "01"}`;
-}
 
 class CupboardRepository {
     constructor(table) {
@@ -23,7 +19,7 @@ class CupboardRepository {
         try {
             const instrutor = await DB('instrutores').where('id', '=', instrutor_id).first();
             if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
-            if (!(instrutor_id && nome && quantidade && descricao && categoria && data_fabricacao && data_validade)) {
+            if (!(instrutor_id && nome && data_fabricacao && data_validade)) {
                 throw new Error('Algum valor está vazio!');
             };
             if (Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
@@ -118,6 +114,8 @@ class CupboardRepository {
     }
     async listByInstrutorId(instrutor_id) {
         try {
+            const instrutor = await DB('instrutores').where('id', '=', `${instrutor_id}`).first();
+            if (!instrutor) throw new Error("Instrutor não cadastrado no sistema!");
             return await DB(this.table).where({ instrutor_id });
         } catch (error) {
             throw new Error(error);
@@ -131,7 +129,7 @@ class CupboardRepository {
             if (!item) throw new Error('Item não encontrado!');
             if (Number.isInteger(data.quantidade) && Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
-            
+
             const newItem = {
                 instrutor_id: item.instrutor_id,
                 nome: item.nome,
@@ -139,7 +137,8 @@ class CupboardRepository {
                 descricao: data.descricao ?? item.descricao,
                 categoria: item.categoria,
                 data_fabricacao: item.data_fabricacao,
-                data_validade: formatDate(data.data_validade) ?? item.data_validade
+                data_validade: formatDate(data.data_validade) ?? item.data_validade,
+                updated_at: today()
             }
             return await DB(this.table).where({ id }).update(newItem)
         } catch (error) {

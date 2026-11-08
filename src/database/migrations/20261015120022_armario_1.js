@@ -11,7 +11,7 @@ export function up(knex) {
         table.text('descricao').defaultTo('vazio');
         table.enu('categoria', ['material', 'equipamento', 'outros']).defaultTo('outros');
         table.date('data_fabricacao').notNullable();
-        table.date('data_validade').defaultTo('indeterminado');
+        table.date('data_validade').defaultTo('0000-00-00');
         table.timestamps(true, true);
 
         table.foreign('instrutor_id').references('id').inTable('instrutores');

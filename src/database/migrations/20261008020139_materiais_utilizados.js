@@ -1,15 +1,10 @@
+import { today } from "../../services/configTime.js";
+
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 export function up(knex) {
-    const today = () => {
-        return new Date().toLocaleString('pt-BR', {
-            timeZone: 'America/Sao_Paulo',
-            dateStyle: 'short',
-            timeStyle: 'medium'
-        })
-    }
     return knex.schema.createTable('materiais_utilizados', (table) => {
         table.increments('id').unsigned().primary();
         table.integer('instrutor_id').notNullable();

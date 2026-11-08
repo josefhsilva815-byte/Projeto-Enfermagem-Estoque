@@ -1,4 +1,5 @@
 import DB from "../database/configDB.js";
+import { today } from "../services/configTime.js";
 import recordUsage from "../services/recordUsage.js";
 import searchItemInAllTables from "../services/searchItemInAllTables.js";
 import InstructorsRepository from "./InstructorsRepository.js";
@@ -104,7 +105,7 @@ class MaterialsUsedRepository {
             throw new Error(error);
         }
     }
-    async listBetween(de, ate = new Date().toISOString().split("T")[0]) {
+    async listBetween(de, ate = today()) {
         try {
             if (!de) throw new Error("Data de início vazia!");
             return DB('materiais_utilizados').whereBetween('criado_em', [de, ate]);
