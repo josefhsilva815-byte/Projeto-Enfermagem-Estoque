@@ -1,6 +1,7 @@
 import DB from "../database/configDB.js";
 import { formatDate, today } from "../services/configTime.js";
-import searchItemInAllTables from "../services/searchItemInAllTables.js";
+import randomID from "../services/randomID.js";
+import InstructorsRepository from "./InstructorsRepository.js";
 
 class CupboardRepository {
     constructor(table) {
@@ -17,19 +18,12 @@ class CupboardRepository {
         data_validade
     }) {
         try {
-            const instrutor = await DB('instrutores').where('id', '=', instrutor_id).first();
-            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
-            if (!(instrutor_id && nome && data_fabricacao && data_validade)) {
-                throw new Error('Algum valor está vazio!');
-            };
+            if (!(instrutor_id && nome && data_fabricacao && data_validade)) throw new Error('Algum valor está vazio!');
             if (Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
-            const randomID = async () => {
-                let id = crypto.randomUUID();
-                const { item } = await searchItemInAllTables(id);
-                if (item) randomID();
-                return id
-            }
+            const instrutor = await new InstructorsRepository().searchById(instrutor_id);
+            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
+
 
             const itemID = await randomID();
             const newItem = await DB(this.table).insert({
@@ -107,14 +101,14 @@ class CupboardRepository {
     }
     async listExpired() {
         try {
-            return await DB(this.table).where('data_validade', '<', new Date().toISOString().split("T")[0]);
+            return await DB(this.table).where('data_validade', '<', new Date().toLocaleDateString());
         } catch (error) {
             throw new Error(error);
         }
     }
     async listByInstrutorId(instrutor_id) {
         try {
-            const instrutor = await DB('instrutores').where('id', '=', `${instrutor_id}`).first();
+            const instrutor = await new InstructorsRepository().searchById(instrutor_id);
             if (!instrutor) throw new Error("Instrutor não cadastrado no sistema!");
             return await DB(this.table).where({ instrutor_id });
         } catch (error) {
@@ -127,7 +121,9 @@ class CupboardRepository {
         try {
             const item = await DB(this.table).where({ id }).first();
             if (!item) throw new Error('Item não encontrado!');
-            if (Number.isInteger(data.quantidade) && Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+            if (!Number.isInteger(data.quantidade) || Number(data.quantidade) <= 0) {
+                throw new Error('Quantidade não pode ser um número menor ou igual a zero!');
+            }
 
 
             const newItem = {
@@ -159,3 +155,5 @@ class CupboardRepository {
 }
 
 export default CupboardRepository;
+
+console.log(Number.isInteger(0), Number.isInteger('a'), Number('a') <= 0)

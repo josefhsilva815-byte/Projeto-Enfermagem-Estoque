@@ -19,12 +19,11 @@ class MaterialsUsedRepository {
             const itemArm = await searchItemInAllTables(item_id);
             const instrutor = await new InstructorsRepository().searchById(instrutor_id);
 
-            if (!(instrutor_id && item_id && quantidade && disciplina && observacao && turma && turno)) {
-                throw new Error('Algum valor está vazio!');
-            };
-            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
             if (!itemArm) throw new Error('Item não cadastrado no sitema!');
-            if (Number.isInteger(quantidade) && Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+            if (!instrutor) throw new Error('Instrutor não cadastrado no sistema!');
+
+            if (!(disciplina && turma && turno)) throw new Error('Algum valor está vazio!');
+            if (!Number.isInteger(quantidade) || Number(quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
             await recordUsage(item_id, quantidade);
 
@@ -35,7 +34,8 @@ class MaterialsUsedRepository {
                 disciplina,
                 observacao,
                 turma,
-                turno
+                turno,
+                criado_em: today()
             });
             return newItemUsed
         } catch (error) {
@@ -72,13 +72,17 @@ class MaterialsUsedRepository {
     }
     async listByItemId(item_id) {
         try {
+            const itemArm = await searchItemInAllTables(item_id);
+            if (!itemArm) throw new Error('Item não cadastrado no sitema!');
             return await DB('materiais_utilizados').where({ item_id });
         } catch (error) {
             throw new Error(error);
         }
     }
-    async listByInstructorId(id) {
+    async listByInstructorId(instrutor_id) {
         try {
+            const instrutor = await new InstructorsRepository().searchById(instrutor_id);
+            if (!instrutor) throw new Error("Instrutor não cadastrado no sistema!");
             return await DB('materiais_utilizados').where('instrutor_id', '=', id);
         } catch (error) {
             throw new Error(error);
@@ -107,7 +111,8 @@ class MaterialsUsedRepository {
     }
     async listBetween(de, ate = today()) {
         try {
-            if (!de) throw new Error("Data de início vazia!");
+            // if (!de) throw new Error("Data de início vazia!");
+            if (!de) return DB('materiais_utilizados').where('criado_em', '<=', `${ate}`);
             return DB('materiais_utilizados').whereBetween('criado_em', [de, ate]);
         } catch (error) {
             throw new Error(error)
@@ -119,7 +124,7 @@ class MaterialsUsedRepository {
         try {
             const item = await DB('materiais_utilizados').where({ id }).first();
             if (!item) throw new Error('Item não encontrado!');
-            if (Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
+            if (!Number.isInteger(data.quantidade) || Number(data.quantidade) <= 0) throw new Error('Quantidade não pode ser menor ou igual a zero!');
 
             const newItemUsed = {
                 instrutor_id: item.instrutor_id,
