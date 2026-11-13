@@ -37,7 +37,7 @@ async function searchItemInAllTables(id = "") {
 
 /*
 >>> TESTE <<<:
-console.log(await searchItemInAllTables('7a177667-49b8-402d-82ff-9fbfcdb69c41'));
+console.log(await searchItemInAllTables('2b80efcc-b121-4bf7-a2ab-1c2fa92964a0'));
 */
 
 export default searchItemInAllTables;
