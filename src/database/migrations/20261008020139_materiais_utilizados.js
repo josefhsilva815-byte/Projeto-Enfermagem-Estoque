@@ -14,7 +14,7 @@ export function up(knex) {
         table.text('observacao').defaultTo('vazio');
         table.string('turma').notNullable();
         table.enu('turno', ['manha', 'tarde', 'noite']).notNullable();
-        table.timestamp('criado_em').defaultTo(today());
+        table.timestamp('criado_em').notNullable();
 
         table.foreign('instrutor_id').references('id').inTable('instrutores');
         table.foreign('item_id').references('id').inTable('armario_1');
