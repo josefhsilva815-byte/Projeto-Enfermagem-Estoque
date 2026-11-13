@@ -5,7 +5,7 @@ async function recordUsage(id, newAmount) {
     try {
         const { table, item } = await searchItemInAllTables(id);
         if (!table) throw new Error(`Item <${id}> não encontrado!`);
-        if (Number.isInteger(newAmount) && Number(newAmount) > item.quantidade) {
+        if (!Number.isInteger(newAmount) || Number(newAmount) > item.quantidade && Number(newAmount) <= 0) {
             throw new Error("A quantidade não pode ser menor ou igual a zero e nem maior que a do estoque!");
         }
 
